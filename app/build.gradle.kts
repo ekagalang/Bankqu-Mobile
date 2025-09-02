@@ -1,19 +1,19 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
     id("dagger.hilt.android.plugin")
     id("kotlin-parcelize")
 }
 
 android {
     namespace = "com.bankqu.mobile"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.bankqu.mobile"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0.0"
 
@@ -35,17 +35,17 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 
     buildFeatures {
-        viewBinding = false
-        dataBinding = false
+        viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -62,8 +62,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
 
     // Dependency Injection (Hilt) - minimal untuk Hilt support
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-compiler:2.48")
+    implementation("com.google.dagger:hilt-android:2.52")
+    ksp("com.google.dagger:hilt-compiler:2.52")
 
     // Testing - basic
     testImplementation("junit:junit:4.13.2")
